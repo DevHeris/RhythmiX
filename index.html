@@ -4,11 +4,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LyriSync</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/spinner.css">
+    <link rel="stylesheet" href="lib/fontawesome.css">
+    <link rel="stylesheet" href="lib/swiper.css">
+    <script src="lib/swiper.js"></script>
+    <script src="script.js" defer></script>
+    <title>RhythmiX</title>
 </head>
 
 <body>
 
+    <section class="header-container">
+        <h2>RhythmiX</h2>
+
+        <div class="social-links">
+            <a href="https://www.twitter.com/InioluwaBadairo" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/ghhe.ris" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+
+    <section class="main-grid-container">
+        <section class="sidebar-container">
+            <div class="top-sidebar-item">
+                <ul class="top-sidebar-ul">
+                    <li>
+                        <a href="/index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+                    </li>
+                    <li>
+                        <a href="#search"><i class="fa-solid fa-search"></i><span>Search</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-sidebar-item">
+                <div class="bottom-sidebar-item-header">
+                    <i class="fa-solid fa-headphones-simple"></i><Span>Your Library</Span>
+                </div>
+                <div class="playlist-options">
+                    <div class="search-icon">
+                        <i class="fa-solid fa-search"></i>
+                    </div>
+                    <div class="sort-option">
+                        <span>Recents</span>
+                        <i class="fa-solid fa-list-ul"></i>
+                        <div class="recent-submenu" aria-expanded="false">
+                            <h5>Sort by</h5>
+                            <ul class="options">
+                                <li><span>Recents</span><i class="fa-solid fa-check"></i></li>
+                                <li>Alphabetical</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-container">
+                    <ul class="songs-ul">
+                        <li>
+                            <img src="images/summer.jpg" alt="Song Cover">
+                            <div class="song-info">
+                                <span class="song-title">Stan</span>
+                                <span class="song-artist">Eminem</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/summer.jpg" alt="Song Cover">
+                            <div class="song-info">
+                                <span class="song-title">When I Grow Up</span>
+                                <span class="song-artist">NF</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/summer.jpg" alt="Song Cover">
+                            <div class="song-info">
+                                <span class="song-title">Shivers</span>
+                                <span class="song-artist">Ed Sheeran</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/summer.jpg" alt="Song Cover">
+                            <div class="song-info">
+                                <span class="song-title">Easy on me</span>
+                                <span class="song-artist">Adele</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/summer.jpg" alt="Song Cover">
+                            <div class="song-info">
+                                <span class="song-title">Jericho</span>
+                                <span class="song-artist">Iniko</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/summer.jpg" alt="Song Cover">
+                            <div class="song-info">
+                                <span class="song-title">Believe</span>
+                                <span class="song-artist">Eminem</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/summer.jpg" alt="Song Cover">
+                            <div class="song-info">
+                                <span class="song-title">Holiday</span>
+                                <span class="song-artist">Rema</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero-container">
+            <div class="navigation-btn">
+                <div class="back-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="forward-btn">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+            <p class="greeting-msg">Good Afternoon</p>
+
+            <section class="recently-played">
+                <h2>Recently Played</h2>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="song">
+                                <div class="song-cover">
+                                    <img src="images/ukulele.jpg" alt="Song Cover">
+                                    <i class="fa-solid fa-play"></i>
+                                    <div class="song-info">
+                                        <span class="song-title">Stan</span>
+                                        <span class="song-artist">Eminem</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="song">
+                                <div class="song-cover">
+                                    <img src="images/ukulele.jpg" alt="Song Cover">
+                                    <i class="fa-solid fa-play"></i>
+                                    <div class="song-info">
+                                        <span class="song-title">When I Grow Up</span>
+                                        <span class="song-artist">NF</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="song">
+                                <div class="song-cover">
+                                    <img src="images/ukulele.jpg" alt="Song Cover">
+                                    <i class="fa-solid fa-play"></i>
+                                    <div class="song-info">
+                                        <span class="song-title">Shivers</span>
+                                        <span class="song-artist">Ed Sheeran</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="song">
+                                <div class="song-cover">
+                                    <img src="images/ukulele.jpg" alt="Song Cover">
+                                    <i class="fa-solid fa-play"></i>
+                                    <div class="song-info">
+                                        <span class="song-title">Easy on me</span>
+                                        <span class="song-artist">Adele</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="song">
+                                <div class="song-cover">
+                                    <img src="images/ukulele.jpg" alt="Song Cover">
+                                    <i class="fa-solid fa-play"></i>
+                                    <div class="song-info">
+                                        <span class="song-title">Jericho</span>
+                                        <span class="song-artist">Iniko</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="song">
+                                <div class="song-cover">
+                                    <img src="images/ukulele.jpg" alt="Song Cover">
+                                    <i class="fa-solid fa-play"></i>
+                                    <div class="song-info">
+                                        <span class="song-title">Believe</span>
+                                        <span class="song-artist">Eminem</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="song">
+                                <div class="song-cover">
+                                    <img src="images/ukulele.jpg" alt="Song Cover">
+                                    <i class="fa-solid fa-play"></i>
+                                    <div class="song-info">
+                                        <span class="song-title">Holiday</span>
+                                        <span class="song-artist">Rema</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </section>
+
+    <section class="bottom-grid-container">
+        <div class="currently-playing-song">
+            <img src="images/hey.jpg" alt="Current song cover">
+            <div class="song-info">
+                <span class="song-title">Hey</span>
+                <span class="song-artist">Renslayer</span>
+            </div>
+            <div class="favourite-icon">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+        </div>
+        <div class="audio-player-controls">
+            <div class="controls">
+                <button id="shuffle">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+                <button id="prev">
+                    <i class="fa-solid fa-backward-step"></i>
+
+                </button>
+                <button id="play">
+                    <i class="fa-solid fa-circle-play"></i>
+                </button>
+                <button id="next">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+                <button id="repeat">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
+            </div>
+            <div class="progress-container" id="progress-container">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+
+        <div class="lyrics-volume-container">
+            <div class="lyrics-microphone-icon">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+            <div class="volume-control">
+                <input type="range" class="volume-slider" min="0" max="100" value="50" step="1">
+            </div>
+        </div>
+    </section>
+
+    <div class="spinner"></div>
 </body>
 
 </html>
