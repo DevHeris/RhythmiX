@@ -91,13 +91,13 @@ ul {
 .top-sidebar-item {
     grid-row: 1/2;
     border-radius: .5em;
-    padding: 1.6em;
+    padding: 1.3em;
     padding-bottom: 0;
 }
 
 .top-sidebar-ul {
     display: flex;
-    gap: 2.5em;
+    gap: 2em;
     flex-direction: column;
 }
 
@@ -255,6 +255,6 @@ ul {
 .songs-ul li img {
     background-size: cover;
     aspect-ratio: 1;
-    width: 50px;
+    width: 45px;
     border-radius: .5em;
 }
