@@ -5,6 +5,7 @@
     --primary-clr: #121212;
     --secondary-clr: #1e2781ff;
     --tertiary-clr: #000000;
+    --white-clr: rgba(255, 255, 255, 0.701);
 }
 
 * {
@@ -29,6 +30,10 @@ a {
     text-decoration: none;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .header-container {
     display: flex;
     justify-content: space-around;
@@ -41,9 +46,12 @@ a {
     color: white;
 }
 
+.header-container a:hover {
+    color: var(--secondary-clr);
+}
+
 .header-container h2 {
     font-weight: 700;
-    color: var(--secondary-clr);
 }
 
 .header-container .social-links {
@@ -88,7 +96,6 @@ a {
 }
 
 .top-sidebar-ul {
-    list-style-type: none;
     display: flex;
     gap: 2.5em;
     flex-direction: column;
@@ -109,6 +116,7 @@ a {
 
 .top-sidebar-ul i {
     margin-inline-end: 1em;
+    font-size: 1.3em;
 }
 
 .bottom-sidebar-item {
@@ -122,13 +130,13 @@ a {
     display: flex;
     align-items: center;
     gap: 1em;
-    color: rgba(255, 255, 255, 0.701);
+    color: var(--white-clr);
     font-weight: bold;
     position: sticky;
     top: 0;
     transition: box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.501);
-    padding: 1.2em;
+    padding: 1em 1.6em;
 }
 
 .bottom-sidebar-item-header:hover,
@@ -145,10 +153,11 @@ a {
 .scroll-wrapper {
     overflow-y: auto;
     max-height: 70vh;
+    position: relative;
 }
 
 .scroll-wrapper::-webkit-scrollbar {
-    width: .6em;
+    width: .8em;
 }
 
 .scroll-wrapper::-webkit-scrollbar-track {
@@ -156,6 +165,96 @@ a {
 }
 
 .scroll-wrapper::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.701);
+    background-color: var(--white-clr);
+}
 
+.playlist-options {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 1.6em;
+    color: var(--white-clr);
+}
+
+.playlist-options .search-icon i {
+    padding: .5em;
+}
+
+.playlist-options .search-icon i:hover {
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.164);
+    color: white;
+    transition-property: background-color;
+    transition-duration: .4s;
+}
+
+.sort-option {
+    padding-top: .1em;
+}
+
+.sort-option span {
+    margin-inline-end: .3em;
+    padding-top: 0;
+}
+
+.sort-option i {
+    padding-top: .25em;
+}
+
+.sort-option .align-center {
+    display: flex;
+}
+
+.sort-option .align-center:hover {
+    color: white;
+    font-size: 1.01em;
+}
+
+.sort-submenu {
+    display: none;
+    background-color: #282828;
+    border-radius: .5em;
+    height: 6;
+    padding: .8em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 8em;
+}
+
+.sort-submenu h5 {
+    font-size: .6em;
+    padding-bottom: 1em;
+}
+
+.sort-submenu .options .selected {
+    color: var(--secondary-clr);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.options {
+    font-weight: bold;
+}
+
+.options li {
+    font-size: .8em;
+    padding-bottom: .8em;
+}
+
+.song-container {
+    padding: 0 1.6em;
+}
+
+.songs-ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.songs-ul li img {
+    background-size: cover;
+    aspect-ratio: 1;
+    width: 50px;
+    border-radius: .5em;
 }
