@@ -304,6 +304,10 @@ ul {
 }
 
 .songs-ul .favourite-icon {
+    color: var(--white-clr);
+}
+
+.favourite-icon .fa-solid {
     color: var(--secondary-clr);
 }
 
@@ -532,4 +536,65 @@ ul {
     background: var(--secondary-clr);
     cursor: pointer;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Hero container styling */
+.hero-container {
+    padding: 1em;
+}
+
+.navigation-btn {
+    display: flex;
+    width: 10%;
+    justify-content: space-around;
+}
+
+.navigation-btn .btn {
+    border-radius: 50%;
+    color: var(--white-clr);
+    background-color: rgba(0, 0, 0, 0.339);
+    aspect-ratio: 1;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navigation-btn i {
+    width: 100%;
+    position: absolute;
+    left: .5em;
+    margin: 0 auto;
+}
+
+.hero-container .greeting-msg {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    padding: .4em;
+    margin: .4em 0;
+}
+
+.recently-played {
+    padding: .4em;
+}
+
+.recently-played h2 {
+    font-size: 1.1em;
+    color: white;
+    padding-bottom: .8em;
+}
+
+.recently-played .swiper-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.recently-played .swiper-wrapper .swipe-slide .song {
+    display: flex;
+    max-width: 20px;
+    border: 2px solid red;
 }
