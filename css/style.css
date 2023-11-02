@@ -51,16 +51,6 @@ ul {
     transition: color .4s ease-out;
 }
 
-.header-container .logo {
-    background: linear-gradient(to left, rgb(112, 111, 120), rgb(17, 21, 53), var(--secondary-clr));
-    border-radius: .5em;
-    padding: .2em;
-}
-
-.header-container .logo a:hover {
-    color: var(--white-clr);
-}
-
 .header-container h2 {
     font-weight: 700;
 }
@@ -84,7 +74,7 @@ ul {
     display: grid;
     grid-template-rows: .5fr 1fr 1fr 1fr;
     grid-gap: .7em;
-    height: 70vh;
+    height: 75vh;
 }
 
 .sidebar-container>* {
@@ -96,7 +86,7 @@ ul {
     grid-row: 1/2;
     background-color: var(--primary-clr);
     border-radius: .5em;
-    max-height: 70vh;
+    max-height: 75vh;
 }
 
 .top-sidebar-item {
@@ -321,6 +311,9 @@ ul {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     padding: 0 1.4em;
+    max-height: 80px;
+    align-items: center;
+    padding-right: .5em;
 }
 
 .currently-playing-song {
@@ -331,11 +324,21 @@ ul {
     grid-gap: .5em;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .currently-playing-song .song-title,
 .currently-playing-song .song-artist {
     display: block;
+}
+
+.currently-playing-song .favourite-icon {
+    color: var(--white-clr);
+    cursor: pointer;
+}
+
+.currently-playing-song .favourite-icon:hover {
+    color: var(--secondary-clr);
 }
 
 .currently-playing-song img {
@@ -354,11 +357,6 @@ ul {
     color: var(--white-clr);
 }
 
-.bottom-grid-container i {
-    color: var(--secondary-clr);
-    cursor: pointer;
-}
-
 .controls {
     display: flex;
     justify-content: space-between;
@@ -372,42 +370,43 @@ ul {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 10px;
+    height: 100%;
 }
 
 .progress-container {
-    width: 60%;
-    height: 4px;
-    position: relative;
+    background: rgba(255, 255, 255, 0.284);
+    border-radius: 5px;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
+    margin: 10px 0;
+    height: 4px;
+    width: 60%;
 }
 
 .progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    appearance: none;
-    width: 100%;
+    background-color: white;
+    border-radius: 5px;
     height: 100%;
-    background: white;
-    cursor: pointer;
-    background: var(--secondary-clr);
-    border-radius: 2px;
+    width: 20%;
+    /* Change back to 0 when its time for the js */
+    transition: width 0.1s linear;
+    position: relative;
 }
 
-.progress::-webkit-slider-thumb {
-    appearance: none;
+.progress:hover {
     background-color: var(--secondary-clr);
-    aspect-ratio: 1;
+}
+
+/* add event listener to make these two hover effects for progress also show even when we hover over the progress container */
+.progress:hover::after {
+    content: '';
+    position: absolute;
     border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 5px 5px rgba(9, 46, 192, 0.22);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    background: var(--secondary-clr);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
 }
 
 .mini-audio-controls {
@@ -415,7 +414,6 @@ ul {
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 10px;
     color: var(--white-clr);
     gap: 1em;
 }
@@ -426,27 +424,38 @@ ul {
     font-weight: bold;
 }
 
-.progress::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--secondary-clr);
-    cursor: pointer;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-}
-
 .controls {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.action-btn {
+.controls .shuffle,
+.controls .repeat {
+    color: var(--white-clr);
+    font-size: .8em;
+}
+
+.controls .shuffle:hover,
+.controls .repeat:hover {
+    color: var(--secondary-clr)
+}
+
+.controls .next,
+.controls .prev {
+    font-size: 1em;
+    color: white;
+}
+
+.controls .play {
+    font-size: 1.8em;
+    color: white;
+}
+
+.audio-player-controls .action-btn {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5em;
-    color: var(--white-clr);
     transition: color 0.3s ease;
 }
 
@@ -464,7 +473,6 @@ ul {
     font-size: 1.2em;
 }
 
-
 .lyrics-volume-container {
     display: flex;
     align-items: center;
@@ -473,6 +481,16 @@ ul {
     padding: 0 10px;
     border-radius: 10px;
     background-color: var(--primary-clr);
+    height: 90%;
+}
+
+.lyrics-music-icon:hover {
+    cursor: pointer;
+}
+
+.lyrics-music-icon:hover::after {
+    content: 'Lyrics';
+    color: white;
 }
 
 .lyrics-music-icon,
@@ -484,14 +502,14 @@ ul {
 
 .lyrics-music-icon i,
 .volume-icon i {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .volume-slider {
     width: 100px;
     -webkit-appearance: none;
     appearance: none;
-    height: 5px;
+    height: 3px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.3);
 }

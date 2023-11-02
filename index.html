@@ -273,6 +273,7 @@
         </section>
     </section>
 
+    <audio src="music/rewind.mp3"></audio>
 
     <section class="bottom-grid-container">
         <div class="currently-playing-song">
@@ -281,40 +282,40 @@
                 <span class="song-title">Hey</span>
                 <span class="song-artist">Renslayer</span>
             </div>
-            <div class="favourite-icon">
-                <i class="fa-solid fa-heart"></i>
+            <div class="favourite-icon" title="Add to favorites">
+                <i class="fa-regular fa-heart"></i>
             </div>
         </div>
         <div class="audio-player-controls">
             <div class="controls">
-                <button id="shuffle" class="action-btn">
+                <button id="shuffle" class="action-btn shuffle" title="shuffle">
                     <i class="fa-solid fa-shuffle"></i>
                 </button>
-                <button id="prev" class="action-btn">
+                <button id="prev" class="action-btn prev" title="prev">
                     <i class="fa-solid fa-backward-step"></i>
 
                 </button>
-                <button id="play" class="action-btn">
+                <button id="play" class="action-btn play" title="play">
                     <i class="fa-solid fa-circle-play"></i>
                 </button>
-                <button id="next" class="action-btn">
+                <button id="next" class="action-btn next" title="next">
                     <i class="fa-solid fa-forward-step"></i>
                 </button>
-                <button id="repeat" class="action-btn">
+                <button id="repeat" class="action-btn repeat" title="repeat">
                     <i class="fa-solid fa-repeat"></i>
                 </button>
             </div>
             <div class="mini-audio-controls">
                 <span class="current-time">1:03</span>
                 <div class="progress-container" id="progress-container">
-                    <input type="range" class="progress" value="0">
+                    <div class="progress" id="progress"></div>
                 </div>
                 <span class="duration">3:40</span>
             </div>
         </div>
 
         <div class="lyrics-volume-container">
-            <div class="lyrics-music-icon">
+            <div class="lyrics-music-icon" title="Lyrics">
                 <i class="fa-solid fa-music"></i>
             </div>
             <div class="volume-control">
