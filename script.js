@@ -1,5 +1,5 @@
-const initSwiper = (appendPoint) => {
-  const swiper = new Swiper(appendPoint, {
+const initSwiper = (swiper) => {
+  const swiper = new Swiper(swiper, {
     slidesPerView: 4,
     spaceBetween: 30,
     freeMode: true,
@@ -12,3 +12,4 @@ const initSwiper = (appendPoint) => {
 };
 
 initSwiper(".swiper");
+initSwiper(".swiper-1");

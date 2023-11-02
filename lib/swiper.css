@@ -21,7 +21,8 @@
     --swiper-theme-color: #007aff;
 }
 
-.swiper {
+.swiper,
+.swiper-1 {
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -620,7 +621,8 @@ button.swiper-pagination-bullet {
 }
 
 /* a11y */
-.swiper .swiper-notification {
+.swiper .swiper-notification,
+.swiper-1 .swiper-notification {
     position: absolute;
     left: 0;
     top: 0;
