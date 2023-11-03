@@ -233,15 +233,17 @@ ul {
 }
 
 .sort-submenu .options .selected {
-    color: var(--secondary-clr);
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    font-size: 1em;
 }
 
 .options {
     font-weight: bold;
+    font-size: 1em;
 }
 
 .options li {

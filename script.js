@@ -7,6 +7,8 @@ const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
 const shuffleBtn = document.getElementById("shuffle");
 const repeatBtn = document.getElementById("repeat");
+const sortOption = document.querySelector(".sort-option");
+const submenu = document.querySelector(".sort-submenu");
 
 // Store fetched song data and set the current song index
 let songsData = [];
@@ -85,14 +87,11 @@ const loadSong = (song) => {
   audioElement.setAttribute("src", song.songUrl);
   playSong();
 
-  const allSongs = document.querySelectorAll(".songs-ul li");
-  allSongs.forEach((song, index) => {
-    if (index === currentSongIndex) {
-      song.classList.add("active");
-    } else {
-      song.classList.remove("active");
-    }
-  });
+  if (index === currentSongIndex) {
+    song.classList.add("active");
+  } else {
+    song.classList.remove("active");
+  }
 };
 
 // Play the currently loaded song
@@ -159,7 +158,40 @@ const shuffleSongs = () => {
   }
 };
 
-audioElement.addEventListener("ended", playRandomSong);
+const toggleSubmenu = (event) => {
+  const submenu = document.querySelector(".sort-submenu");
+  if (submenu.style.display === "block" && !submenu.contains(event.target)) {
+    submenu.style.display = "none"; // Hide the submenu if it's visible and the click is outside
+  } else if (event.target.parentElement.className === "align-center") {
+    submenu.style.display = "block"; // Show the submenu if it's hidden
+  }
+};
+
+const sortSongs = (criteria) => {
+  const songsList = document.querySelector(".songs-ul");
+  const songs = Array.from(songsList.getElementsByTagName("li"));
+
+  if (criteria === "Alphabetical") {
+    songs.sort((a, b) => {
+      const nameA = a.textContent.toLowerCase();
+      const nameB = b.textContent.toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+  }
+
+  // Clear the current list
+  while (songsList.firstChild) {
+    songsList.removeChild(songsList.firstChild);
+  }
+
+  document.querySelector(".align-center span").textContent = "Alphabetical";
+  submenu.style.display = "none";
+
+  // Append the sorted songs back to the list
+  songs.forEach((song) => {
+    songsList.appendChild(song);
+  });
+};
 
 // Event listener for play button click
 playBtn.addEventListener("click", () => {
@@ -198,6 +230,13 @@ const initApp = async () => {
   prevBtn.addEventListener("click", prevSong);
   repeatBtn.addEventListener("click", repeatCurrentSong);
   shuffleBtn.addEventListener("click", shuffleSongs);
+  document.addEventListener("click", toggleSubmenu);
+  audioElement.addEventListener("ended", playRandomSong);
+  submenu.addEventListener("click", (event) => {
+    if (event.target.textContent === "Alphabetical") {
+      sortSongs("Alphabetical");
+    }
+  });
 };
 
 initApp(); // Initialize the application when the script is loaded
