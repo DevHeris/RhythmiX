@@ -596,7 +596,6 @@ ul {
     display: flex;
     padding: .6em;
     padding-bottom: 2em;
-    /* border: 2px solid red; */
     background-color: var(--primary-clr);
     height: 100%;
     box-shadow: 4px 4px 10px black;
@@ -615,7 +614,7 @@ ul {
     margin-bottom: .5em;
 }
 
-.swiper-slide .song .fa-play {
+.swiper-slide .song i {
     font-size: 1.5em;
     position: relative;
     padding: .45em;
@@ -627,7 +626,7 @@ ul {
     margin-bottom: .5em;
 }
 
-.swiper-slide .song .fa-play:hover {
+.swiper-slide .song i:hover {
     background-color: rgba(0, 0, 255, 0.487);
 }
 
