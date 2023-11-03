@@ -269,7 +269,8 @@ ul {
 }
 
 .songs-ul .active .song-title {
-    color: var(--secondary-clr);
+
+    text-shadow: 1px 1px 3px #121212;
 }
 
 .songs-ul li {

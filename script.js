@@ -1,6 +1,3 @@
-// // const repeatBtn = document.getElementById("repeat");
-// // const shuffleBtn = document.getElementById("shuffle");
-
 // Get required DOM elements
 const audioElement = document.querySelector(".audioElement");
 const songList = document.querySelector(".songs-ul");
@@ -8,6 +5,8 @@ const currentSong = document.querySelector(".currently-playing-song");
 const playBtn = document.getElementById("play");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
+const shuffleBtn = document.getElementById("shuffle");
+const repeatBtn = document.getElementById("repeat");
 
 // Store fetched song data and set the current song index
 let songsData = [];
@@ -53,10 +52,19 @@ const createSongElement = (song, index) => {
 const selectSong = (event) => {
   const listItem = event.target.closest("li");
   if (listItem) {
-    const index = listItem.dataset.index;
+    const index = parseInt(listItem.dataset.index, 10); // Parse index to an integer
     const selectedSong = songsData[index];
     loadSong(selectedSong);
     currentSongIndex = index;
+
+    const allSongs = document.querySelectorAll(".songs-ul li");
+    allSongs.forEach((song, idx) => {
+      if (idx === index) {
+        song.classList.add("active");
+      } else {
+        song.classList.remove("active");
+      }
+    });
   }
 };
 
@@ -76,6 +84,15 @@ const loadSong = (song) => {
   // Set the audio source and play the song
   audioElement.setAttribute("src", song.songUrl);
   playSong();
+
+  const allSongs = document.querySelectorAll(".songs-ul li");
+  allSongs.forEach((song, index) => {
+    if (index === currentSongIndex) {
+      song.classList.add("active");
+    } else {
+      song.classList.remove("active");
+    }
+  });
 };
 
 // Play the currently loaded song
@@ -100,7 +117,6 @@ const nextSong = () => {
   if (currentSongIndex > songsData.length - 1) {
     currentSongIndex = 0;
   }
-
   loadSong(songsData[currentSongIndex]);
 };
 
@@ -110,9 +126,40 @@ const prevSong = () => {
   if (currentSongIndex < 0) {
     currentSongIndex = songsData.length - 1;
   }
-
   loadSong(songsData[currentSongIndex]);
 };
+
+const playRandomSong = () => {
+  const randomIndex = Math.floor(Math.random() * songsData.length);
+  loadSong(songsData[randomIndex]);
+};
+
+const repeatCurrentSong = () => {
+  if (repeatBtn.style.color !== "blue") {
+    repeatBtn.style.color = "blue";
+    audioElement.loop = true; // Enabling song repeat
+  } else {
+    repeatBtn.style.color = "rgba(255, 255, 255, 0.701)";
+    audioElement.loop = false; // Disabling song repeat
+  }
+};
+
+const shuffleSongs = () => {
+  if (shuffleBtn.style.color !== "blue") {
+    shuffleBtn.style.color = "blue";
+    if (!audioElement.classList.contains("play")) {
+      playRandomSong();
+    }
+    const allSongs = document.querySelectorAll(".songs-ul li");
+    allSongs.forEach((song) => {
+      song.classList.remove("active");
+    });
+  } else {
+    shuffleBtn.style.color = "rgba(255, 255, 255, 0.701)";
+  }
+};
+
+audioElement.addEventListener("ended", playRandomSong);
 
 // Event listener for play button click
 playBtn.addEventListener("click", () => {
@@ -124,7 +171,7 @@ playBtn.addEventListener("click", () => {
   }
 });
 
-// Initialize the application
+// Initialize the swiper
 const initSwiper = (target, delayTime) => {
   const swiper = new Swiper(target, {
     slidesPerView: 4,
@@ -149,6 +196,8 @@ const initApp = async () => {
   songList.addEventListener("click", selectSong);
   nextBtn.addEventListener("click", nextSong);
   prevBtn.addEventListener("click", prevSong);
+  repeatBtn.addEventListener("click", repeatCurrentSong);
+  shuffleBtn.addEventListener("click", shuffleSongs);
 };
 
 initApp(); // Initialize the application when the script is loaded
