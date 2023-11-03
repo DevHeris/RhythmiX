@@ -1,63 +1,63 @@
 {
-  "song": [
+  "songs": [
     {
       "name": "To Die For",
       "artist": "Sam Smith",
-      "ImageUrl": "./images/black and red disc.jpg",
+      "imageUrl": "./images/black and red disc.jpg",
       "songUrl": "./music/05 Sam Smith - To Die For (NetNaija.com).mp3"
     },
     {
       "name": "Fashion",
       "artist": "Jon Bellion",
-      "ImageUrl": "./images/headphones-african.jpg",
+      "imageUrl": "./images/headphones-african.jpg",
       "songUrl": "./music/05. Fashion - Jon Bellion (320kbps).mp3"
     },
     {
       "name": "Leave Your Life",
       "artist": "Ed Sheeran",
-      "ImageUrl": "./images/headphones-male.jpg",
+      "imageUrl": "./images/headphones-male.jpg",
       "songUrl": "./music/07 Ed Sheeran - Leave Your Life (NetNaija.com).mp3"
     },
     {
       "name": "Supermarket Flowers",
       "artist": "Ed Sheeran",
-      "ImageUrl": "./images/hey.jpg",
+      "imageUrl": "./images/hey.jpg",
       "songUrl": "./music/09.Ed Sheeran - Supermarket Flowers.mp3"
     },
     {
       "name": "iRobot",
       "artist": "Jon Bellion",
-      "ImageUrl": "./images/retro-microphone.jpg",
+      "imageUrl": "./images/retro-microphone.jpg",
       "songUrl": "./music/12 iRobot.m4a"
     },
     {
       "name": "Be Right Now",
       "artist": "Ed Sheeran",
-      "ImageUrl": "./images/rewind.jpg",
+      "imageUrl": "./images/rewind.jpg",
       "songUrl": "./music/14 Ed Sheeran - Be Right Now (NetNaija.com).mp3"
     },
     {
       "name": "Happier Than Ever",
       "artist": "Billie Eilish",
-      "ImageUrl": "./images/summer.jpg",
+      "imageUrl": "./images/summer.jpg",
       "songUrl": "./music/15 Billie Eilish - Happier Than Ever (NetNaija.com).mp3"
     },
     {
       "name": "Thotiana",
       "artist": "Blueface _Ft_Cardi_B",
-      "ImageUrl": "./images/three-discs.jpg",
+      "imageUrl": "./images/three-discs.jpg",
       "songUrl": "./music/Blueface_Ft_Cardi_B_-_Thotiana_Remix_.mp3"
     },
     {
       "name": "Trust",
       "artist": "Brent Faiyaz",
-      "ImageUrl": "./images/top-view-vinyl-discs.jpg",
+      "imageUrl": "./images/top-view-vinyl-discs.jpg",
       "songUrl": "./music/Brent Faiyaz - Trust.mp3"
     },
     {
       "name": "Press",
       "artist": "Cardi B",
-      "ImageUrl": "./images/ukulele.jpg",
+      "imageUrl": "./images/ukulele.jpg",
       "songUrl": "./music/Cardi_B_-_Press.mp3"
     }
   ]
