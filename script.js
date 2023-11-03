@@ -1,5 +1,8 @@
-const initSwiper = (swiperDiv, delayTime) => {
-  const swiper = new Swiper(swiperDiv, {
+const audioElement = document.querySelector(".audioElement");
+console.log(audioElement);
+
+const initSwiper = (target, delayTime) => {
+  const swiper = new Swiper(target, {
     slidesPerView: 4,
     spaceBetween: 30,
     freeMode: true,
