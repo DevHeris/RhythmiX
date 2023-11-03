@@ -1,5 +1,4 @@
 const audioElement = document.querySelector(".audioElement");
-console.log(audioElement);
 
 const initSwiper = (target, delayTime) => {
   const swiper = new Swiper(target, {
