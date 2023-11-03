@@ -588,34 +588,61 @@ ul {
 .swiper-wrapper {
     display: flex;
     flex-direction: row;
+    padding-bottom: .3em;
 }
+
 
 .swiper-slide .song {
     display: flex;
     padding: .6em;
-    border: 2px solid red;
+    padding-bottom: 2em;
+    /* border: 2px solid red; */
     background-color: var(--primary-clr);
     height: 100%;
-    /* box-shadow: 2px 2px 4px (var(--tertiary-clr)); */
+    box-shadow: 4px 4px 10px black;
+    border-radius: .5em;
 }
 
 .swiper-slide .song:hover {
     background-color: rgba(0, 0, 0, 0.589);
     cursor: pointer;
+    transition: all .4s ease;
 }
 
 .swiper-slide .song img {
-    /* position: relative; */
     border-radius: .5em;
     height: 70%;
+    margin-bottom: .5em;
 }
 
 .swiper-slide .song .fa-play {
-    border-radius: 50%;
-    width: 20px;
-    aspect-ratio: 1;
+    font-size: 1.5em;
+    position: relative;
+    padding: .45em;
+    padding-top: .3em;
+    width: 38px;
+    height: 38px;
     background-color: var(--secondary-clr);
-    /* position: absolute; */
-    /* bottom: 0; */
-    /* right: 0; */
+    border-radius: 50%;
+    margin-bottom: .5em;
+}
+
+.swiper-slide .song .fa-play:hover {
+    background-color: rgba(0, 0, 255, 0.487);
+}
+
+.swiper-slide .song-title {
+    color: white;
+    font-weight: bold;
+}
+
+.swiper-slide .song-artist {
+    color: var(--white-clr);
+    font-size: .8em;
+    margin-bottom: .3em;
+}
+
+.swiper-slide .play {
+    display: flex;
+    justify-content: flex-end;
 }
