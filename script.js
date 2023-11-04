@@ -46,30 +46,52 @@ const createSongElement = (song, index) => {
       <span class="song-artist">${song.artist}</span>
     </div>
     <div class="favourite-icon">
-      <i class="fa-solid fa-heart"></i>
+      <i class="fa-regular fa-heart"></i>
     </div>
   `;
   li.dataset.index = index; // Store the song's index in the dataset attribute
+
   return li; // Return the created list item
 };
 
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("fa-heart")) {
+    const song =
+      event.target.parentElement.parentElement.firstElementChild
+        .nextElementSibling.firstElementChild.textContent;
+    if (event.target.classList.contains("fa-regular")) {
+      event.target.classList.remove("fa-regular");
+      event.target.classList.add("fa-solid");
+      if (!checkIfSongExists(song)) {
+        addFavoriteSongToStorage(song);
+      }
+    } else {
+      event.target.classList.add("fa-regular");
+      event.target.classList.remove("fa-solid");
+
+      removeSongFromStorage(song);
+    }
+  }
+});
 // Handle song selection and update the current song index
 const selectSong = (event) => {
-  const listItem = event.target.closest("li");
-  if (listItem) {
-    const index = parseInt(listItem.dataset.index, 10); // Parse index to an integer
-    const selectedSong = songsData[index];
-    loadSong(selectedSong);
-    currentSongIndex = index;
+  if (!event.target.classList.contains("fa-heart")) {
+    const listItem = event.target.closest("li");
+    if (listItem) {
+      const index = parseInt(listItem.dataset.index, 10); // Parse index to an integer
+      const selectedSong = songsData[index];
+      loadSong(selectedSong);
+      currentSongIndex = index;
 
-    const allSongs = document.querySelectorAll(".songs-ul li");
-    allSongs.forEach((song, idx) => {
-      if (idx === index) {
-        song.classList.add("active");
-      } else {
-        song.classList.remove("active");
-      }
-    });
+      const allSongs = document.querySelectorAll(".songs-ul li");
+      allSongs.forEach((song, idx) => {
+        if (idx === index) {
+          song.classList.add("active");
+        } else {
+          song.classList.remove("active");
+        }
+      });
+    }
   }
 };
 
@@ -226,6 +248,45 @@ const secondsToMinutes = (seconds) => {
   return `${minutes}:${remainingSeconds.toFixed(0)} `;
 };
 
+const addFavoriteSongToStorage = (song) => {
+  let songFromStorage = getSongFromStorage();
+
+  songFromStorage.push(song);
+
+  localStorage.setItem("songs", JSON.stringify(songFromStorage));
+};
+
+const getSongFromStorage = () => {
+  let songFromStorage;
+
+  if (localStorage.getItem("songs") === null) {
+    songFromStorage = [];
+  } else {
+    songFromStorage = JSON.parse(localStorage.getItem("songs"));
+  }
+
+  return songFromStorage;
+};
+
+const removeSong = (song) => {
+  song.remove();
+
+  removeSongFromStorage(song.textContent);
+};
+
+const removeSongFromStorage = (song) => {
+  let songFromStorage = getSongFromStorage();
+  songFromStorage = songFromStorage.filter((i) => i !== song);
+
+  localStorage.setItem("songs", JSON.stringify(songFromStorage));
+};
+
+const checkIfSongExists = (song) => {
+  const songFromStorage = getSongFromStorage();
+
+  return songFromStorage.includes(song);
+};
+
 // Event listener for play button click
 playBtn.addEventListener("click", () => {
   const isPlaying = audioElement.classList.contains("play");
@@ -268,6 +329,7 @@ const initApp = async () => {
   submenu.addEventListener("click", (event) => {
     if (event.target.textContent === "Alphabetical") {
       sortSongs("Alphabetical");
+      event.target.style.color = "blue";
     }
   });
   progressContainer.addEventListener("click", setProgress);
