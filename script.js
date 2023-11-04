@@ -151,15 +151,10 @@ const repeatCurrentSong = () => {
 const shuffleSongs = () => {
   if (shuffleBtn.style.color !== "blue") {
     shuffleBtn.style.color = "blue";
-    if (!audioElement.classList.contains("play")) {
-      playRandomSong();
-    }
-    const allSongs = document.querySelectorAll(".songs-ul li");
-    allSongs.forEach((song) => {
-      song.classList.remove("active");
-    });
+    playRandomSong();
   } else {
     shuffleBtn.style.color = "rgba(255, 255, 255, 0.701)";
+    playRandomSong();
   }
 };
 
