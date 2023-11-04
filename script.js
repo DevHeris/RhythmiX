@@ -11,6 +11,7 @@ const sortOption = document.querySelector(".sort-option");
 const submenu = document.querySelector(".sort-submenu");
 const progress = document.querySelector(".progress");
 const progressContainer = document.querySelector(".progress-container");
+const volumeSlider = document.querySelector(".volume-slider");
 
 // Store fetched song data and set the current song index
 let songsData = [];
@@ -276,6 +277,9 @@ const initApp = async () => {
   });
   progressContainer.addEventListener("click", setProgress);
   audioElement.addEventListener("timeupdate", updateProgress);
+  volumeSlider.addEventListener("input", () => {
+    audioElement.volume = volumeSlider.value;
+  });
 };
 
 initApp(); // Initialize the application when the script is loaded
