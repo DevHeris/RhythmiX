@@ -54,6 +54,31 @@ const createSongElement = (song, index) => {
   return li; // Return the created list item
 };
 
+const displayFavouriteSongs = () => {
+  const songFromStorage = getSongFromStorage();
+  console.log(songFromStorage);
+
+  songFromStorage.forEach((song) => {
+    const div = document.createElement("div");
+    div.classList.add(".swiper-slide");
+    div.innerHTML = `
+  <div class="song">
+           <div class="song-cover">
+             <img src="${song.imageUrl}" alt="Song Cover">
+             <div class="song-info">
+                 <span class="song-title">${song.name}</span>
+                <span class="song-artist">${song.artist}</span>
+            <div class="play">
+         <i class="fa-solid fa-play"></i>
+              </div>
+             </div>
+           </div>
+         </div>
+  `;
+    document.querySelector(".favorite-songs .swiper-wrapper").prepend(div);
+  });
+};
+
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("fa-heart")) {
     const song =
@@ -68,7 +93,6 @@ document.addEventListener("click", (event) => {
     } else {
       event.target.classList.add("fa-regular");
       event.target.classList.remove("fa-solid");
-
       removeSongFromStorage(song);
     }
   }
@@ -337,6 +361,8 @@ const initApp = async () => {
   volumeSlider.addEventListener("input", () => {
     audioElement.volume = volumeSlider.value;
   });
+  // document.addEventListener("DOMContentLoaded", displayFavouriteSongs);
+  displayFavouriteSongs();
 };
 
 initApp(); // Initialize the application when the script is loaded
