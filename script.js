@@ -9,6 +9,8 @@ const shuffleBtn = document.getElementById("shuffle");
 const repeatBtn = document.getElementById("repeat");
 const sortOption = document.querySelector(".sort-option");
 const submenu = document.querySelector(".sort-submenu");
+const progress = document.querySelector(".progress");
+const progressContainer = document.querySelector(".progress-container");
 
 // Store fetched song data and set the current song index
 let songsData = [];
@@ -86,12 +88,14 @@ const loadSong = (song) => {
   // Set the audio source and play the song
   audioElement.setAttribute("src", song.songUrl);
   playSong();
-
-  if (index === currentSongIndex) {
-    song.classList.add("active");
-  } else {
-    song.classList.remove("active");
-  }
+  const allSongs = document.querySelectorAll(".songs-ul li");
+  allSongs.forEach((song, index) => {
+    if (index === currentSongIndex) {
+      song.classList.add("active");
+    } else {
+      song.classList.remove("active");
+    }
+  });
 };
 
 // Play the currently loaded song
@@ -193,6 +197,39 @@ const sortSongs = (criteria) => {
   });
 };
 
+const updateProgress = (event) => {
+  const { duration, currentTime } = event.srcElement;
+  const progressPercentage = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercentage}%`;
+
+  if (progressPercentage === 100) {
+    nextSong();
+  }
+
+  document.querySelector(".current-time").textContent =
+    secondsToMinutes(currentTime);
+  document.querySelector(".duration").textContent = secondsToMinutes(duration);
+};
+
+const setProgress = (event) => {
+  if (event.target.className === "progress-container") {
+  }
+
+  const progressContainer = document.querySelector(".progress-container");
+  const width = progressContainer.clientWidth;
+  const clickX = event.offsetX;
+  const duration = audioElement.duration;
+
+  const newTime = (clickX / width) * duration;
+  audioElement.currentTime = newTime;
+};
+
+const secondsToMinutes = (seconds) => {
+  const minutes = Math.floor(seconds / 60); // Calculate the number of whole minutes
+  const remainingSeconds = seconds % 60; // Calculate the remaining seconds
+  return `${minutes}:${remainingSeconds.toFixed(0)} `;
+};
+
 // Event listener for play button click
 playBtn.addEventListener("click", () => {
   const isPlaying = audioElement.classList.contains("play");
@@ -237,6 +274,8 @@ const initApp = async () => {
       sortSongs("Alphabetical");
     }
   });
+  progressContainer.addEventListener("click", setProgress);
+  audioElement.addEventListener("timeupdate", updateProgress);
 };
 
 initApp(); // Initialize the application when the script is loaded

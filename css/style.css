@@ -380,7 +380,7 @@ ul {
     border-radius: 5px;
     cursor: pointer;
     margin: 10px 0;
-    height: 4px;
+    height: 5px;
     width: 60%;
 }
 
@@ -388,18 +388,17 @@ ul {
     background-color: white;
     border-radius: 5px;
     height: 100%;
-    width: 20%;
-    /* Change back to 0 when its time for the js */
+    width: 0%;
     transition: width 0.1s linear;
     position: relative;
 }
 
-.progress:hover {
+.progress-container:hover .progress {
     background-color: var(--secondary-clr);
+
 }
 
-/* add event listener to make these two hover effects for progress also show even when we hover over the progress container */
-.progress:hover::after {
+.progress-container:hover .progress::after {
     content: '';
     position: absolute;
     border-radius: 50%;
