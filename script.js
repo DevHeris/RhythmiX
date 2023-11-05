@@ -255,10 +255,9 @@ const playRandomSong = () => {
 const changeRandomColor = () => {
   setInterval(() => {
     let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    document.querySelector(
-      ".hero-container"
-    ).style.background = `linear-gradient(#${randomColor} 0%, black)`;
-  }, 5000);
+    const heroContainer = document.querySelector(".hero-container");
+    heroContainer.style.background = `linear-gradient(#${randomColor} 0%, black)`;
+  }, 6000);
 };
 
 const repeatCurrentSong = () => {
@@ -485,15 +484,28 @@ const setInitialFavoriteButtonColor = () => {
 
 // Initialize the swiper
 const initSwiper = () => {
-  const swiper = new Swiper(".swiper-1", {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    freeMode: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-  });
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    const swiper = new Swiper(".swiper-1", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      freeMode: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+    });
+  } else {
+    const swiper = new Swiper(".swiper-1", {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      freeMode: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+    });
+  }
 };
 
 document.addEventListener("DOMContentLoaded", setInitialFavoriteButtonColor);

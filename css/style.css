@@ -701,3 +701,88 @@ ul {
     justify-content: flex-end;
     align-items: flex-start;
 }
+
+@media screen and (max-width:763px) {
+    .main-grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 1.5em;
+    }
+
+    .sidebar-container {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .bottom-sidebar-item {
+        grid-row: 2/5;
+    }
+
+    .hero-container {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        padding: 2em;
+    }
+
+    .back-btn {
+        margin-inline-end: .5em;
+    }
+
+    .greeting-msg {
+        text-align: center;
+    }
+
+    .favorite-songs h2 {
+        text-align: center;
+    }
+
+    .swiper-slide .song {
+        height: 18em;
+    }
+
+    .swiper-slide img {
+        height: 12em;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .search-results {
+        max-height: 15em;
+        overflow: auto;
+        padding-bottom: .5em;
+    }
+
+    .search-input .search-box {
+        width: 100%;
+    }
+
+    .bottom-grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 0.6em;
+        max-height: 120px;
+        padding: 0 1em;
+    }
+
+    .currently-playing-song {
+        grid-template-columns: 1fr;
+        gap: 0.5em;
+        padding: 0.5em;
+    }
+
+    .audio-player-controls,
+    .lyrics-volume-container {
+        padding: 0.5em;
+    }
+
+    .lyrics-volume-container {
+        margin-bottom: .5em
+    }
+
+    .volume-slider {
+        font-size: 1.2em;
+    }
+
+}
