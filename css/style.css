@@ -395,7 +395,6 @@ ul {
 
 .progress-container:hover .progress {
     background-color: var(--secondary-clr);
-
 }
 
 .progress-container:hover .progress::after {
@@ -612,8 +611,9 @@ ul {
 
 .swiper-slide .song img {
     border-radius: .5em;
-    height: 70%;
+    height: 9em;
     margin-bottom: .5em;
+    /* width: 100%; */
 }
 
 .swiper-slide .song i {

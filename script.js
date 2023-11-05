@@ -54,13 +54,28 @@ const createSongElement = (song, index) => {
   return li; // Return the created list item
 };
 
-const displayFavouriteSongs = () => {
-  const songFromStorage = getSongFromStorage();
-  console.log(songFromStorage);
+const getSongDataByName = (songName) => {
+  const foundSong = songsData.find((song) => song.name === songName);
+  return foundSong;
+};
 
-  songFromStorage.forEach((song) => {
+const displayFavouriteSongs = () => {
+  const songNamesInStorage = getSongFromStorage();
+
+  let faveSongsArray = [];
+
+  songNamesInStorage.forEach((name) => {
+    const song = getSongDataByName(name);
+    if (song) {
+      faveSongsArray.push(song);
+    } else {
+      console.log(`Song with name '${name}' not found in songsData.`);
+    }
+  });
+
+  faveSongsArray.forEach((song) => {
     const div = document.createElement("div");
-    div.classList.add(".swiper-slide");
+    div.classList.add("swiper-slide");
     div.innerHTML = `
   <div class="song">
            <div class="song-cover">
@@ -81,9 +96,10 @@ const displayFavouriteSongs = () => {
 
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("fa-heart")) {
-    const song =
-      event.target.parentElement.parentElement.firstElementChild
-        .nextElementSibling.firstElementChild.textContent;
+    const songTitleElement =
+      event.target.parentElement.parentElement.querySelector(".song-title");
+    const song = songTitleElement.textContent;
+
     if (event.target.classList.contains("fa-regular")) {
       event.target.classList.remove("fa-regular");
       event.target.classList.add("fa-solid");
@@ -320,6 +336,27 @@ playBtn.addEventListener("click", () => {
     playSong();
   }
 });
+
+const isSongInStorage = (songName) => {
+  const songFromStorage = getSongFromStorage();
+  return songFromStorage.includes(songName);
+};
+
+const setInitialFavoriteButtonColor = () => {
+  setTimeout(() => {
+    const favoriteButtons = document.querySelectorAll(".fa-heart");
+    favoriteButtons.forEach((button) => {
+      const songTitle =
+        button.parentElement.parentElement.querySelector(
+          ".song-title"
+        ).textContent;
+      if (isSongInStorage(songTitle)) {
+        button.classList.add("fa-solid"); // Apply the blue color class
+      }
+    });
+  }, 1000);
+};
+document.addEventListener("DOMContentLoaded", setInitialFavoriteButtonColor);
 
 // Initialize the swiper
 const initSwiper = (target, delayTime) => {
