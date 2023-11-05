@@ -575,7 +575,6 @@ ul {
     margin: .4em 0;
 }
 
-.recently-played,
 .favorite-songs {
     padding: .4em;
 }
@@ -590,7 +589,7 @@ ul {
 .swiper-wrapper {
     display: flex;
     flex-direction: row;
-    padding-bottom: .3em;
+    padding-bottom: .8em;
 }
 
 
@@ -629,10 +628,15 @@ ul {
     height: 38px;
     background-color: var(--secondary-clr);
     border-radius: 50%;
+    color: var(--white-clr);
+    box-shadow: 1px 1px 2px white;
+
 }
 
 .swiper-slide .song i:hover {
     background-color: rgba(0, 0, 255, 0.487);
+    width: 40px;
+    height: 40px;
 }
 
 .swiper-slide .song-title {

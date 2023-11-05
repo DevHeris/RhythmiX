@@ -12,6 +12,7 @@ const submenu = document.querySelector(".sort-submenu");
 const progress = document.querySelector(".progress");
 const progressContainer = document.querySelector(".progress-container");
 const volumeSlider = document.querySelector(".volume-slider");
+const spinner = document.querySelector(".spinner");
 
 // Store fetched song data and set the current song index
 let songsData = [];
@@ -19,12 +20,36 @@ let currentSongIndex = 0; // Initialize the index of the currently playing song
 
 // Fetch song data from a JSON file
 const fetchSong = async () => {
+  showSpinner();
+
+  setTimeout(() => {
+    hideSpinner();
+  }, 500);
+
   try {
     const response = await fetch("./songdata.json");
     const song = await response.json();
     songsData = song.songs; // Store songs in the songsData array
   } catch (error) {
     console.error("Error fetching song data: ", error);
+  }
+};
+
+const greetByTimeOfDay = () => {
+  const greetingElement = document.querySelector(".greeting-msg");
+  const date = new Date();
+  const hour = date.getHours();
+
+  switch (true) {
+    case hour < 12:
+      greetingElement.innerHTML = "Good Morning	&#127911;";
+      break;
+    case hour < 18:
+      greetingElement.innerHTML = "Good Afternoon	&#127911;";
+      break;
+    default:
+      greetingElement.innerHTML = "Good Evening	&#127911;";
+      break;
   }
 };
 
@@ -90,8 +115,8 @@ const displayFavouriteSongs = () => {
           <div class="song-info">
             <span class="song-title">${song.name}</span>
             <span class="song-artist">${song.artist}</span>
-            <div class="play">
-              <i class="fa-solid fa-play"></i>
+            <div class="play" id="playFaveBtn">
+              <i class="fa-solid fa-play playI"></i>
             </div>
           </div>
         </div>
@@ -101,6 +126,18 @@ const displayFavouriteSongs = () => {
   });
 
   initSwiper();
+
+  const playFaveBtns = document.querySelectorAll("#playFaveBtn");
+  playFaveBtns.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      const songName =
+        event.target.parentElement.parentElement.querySelector(
+          ".song-title"
+        ).textContent;
+      const songData = getSongDataByName(songName);
+      loadSong(songData);
+    });
+  });
 };
 
 document.addEventListener("click", (event) => {
@@ -280,21 +317,20 @@ const updateProgress = (event) => {
 
 const setProgress = (event) => {
   if (event.target.className === "progress-container") {
+    const progressContainer = document.querySelector(".progress-container");
+    const width = progressContainer.clientWidth;
+    const clickX = event.offsetX;
+    const duration = audioElement.duration;
+
+    const newTime = (clickX / width) * duration;
+    audioElement.currentTime = newTime;
   }
-
-  const progressContainer = document.querySelector(".progress-container");
-  const width = progressContainer.clientWidth;
-  const clickX = event.offsetX;
-  const duration = audioElement.duration;
-
-  const newTime = (clickX / width) * duration;
-  audioElement.currentTime = newTime;
 };
 
 const secondsToMinutes = (seconds) => {
   const minutes = Math.floor(seconds / 60); // Calculate the number of whole minutes
   const remainingSeconds = seconds % 60; // Calculate the remaining seconds
-  return `${minutes}:${remainingSeconds.toFixed(0)} `;
+  return `${minutes}:${remainingSeconds.toFixed(0).padStart(2, "0")} `;
 };
 
 const addFavoriteSongToStorage = (song) => {
@@ -339,6 +375,18 @@ const checkIfSongExists = (song) => {
   return songFromStorage.includes(song);
 };
 
+const showSpinner = () => {
+  if (!spinner.classList.contains("show")) {
+    spinner.classList.add("show");
+  }
+};
+
+const hideSpinner = () => {
+  if (spinner.classList.contains("show")) {
+    spinner.classList.remove("show");
+  }
+};
+
 // Event listener for play button click
 playBtn.addEventListener("click", () => {
   const isPlaying = audioElement.classList.contains("play");
@@ -368,7 +416,6 @@ const setInitialFavoriteButtonColor = () => {
     });
   }, 1000);
 };
-document.addEventListener("DOMContentLoaded", setInitialFavoriteButtonColor);
 
 // Initialize the swiper
 const initSwiper = () => {
@@ -376,7 +423,6 @@ const initSwiper = () => {
     slidesPerView: 4,
     spaceBetween: 20,
     freeMode: true,
-    // loop: true,
     autoplay: {
       delay: 4000,
       disableOnInteraction: false,
@@ -384,11 +430,11 @@ const initSwiper = () => {
   });
 };
 
+document.addEventListener("DOMContentLoaded", setInitialFavoriteButtonColor);
+
 // Initialize the application with necessary event listeners
 const initApp = async () => {
   await fetchSong(); // Fetch song data
-  displaySongList(); // Display the song list
-  initSwiper();
 
   // Event listeners for song list item clicks and navigation buttons
   songList.addEventListener("click", selectSong);
@@ -398,19 +444,22 @@ const initApp = async () => {
   shuffleBtn.addEventListener("click", shuffleSongs);
   document.addEventListener("click", toggleSubmenu);
   audioElement.addEventListener("ended", playRandomSong);
+  progressContainer.addEventListener("click", setProgress);
+  audioElement.addEventListener("timeupdate", updateProgress);
   submenu.addEventListener("click", (event) => {
     if (event.target.textContent === "Alphabetical") {
       sortSongs("Alphabetical");
       event.target.style.color = "blue";
     }
+
+    volumeSlider.addEventListener("input", () => {
+      audioElement.volume = volumeSlider.value;
+    });
   });
-  progressContainer.addEventListener("click", setProgress);
-  audioElement.addEventListener("timeupdate", updateProgress);
-  volumeSlider.addEventListener("input", () => {
-    audioElement.volume = volumeSlider.value;
-  });
-  // document.addEventListener("DOMContentLoaded", displayFavouriteSongs);
+  initSwiper();
+  displaySongList(); // Display the song list
+  greetByTimeOfDay();
   displayFavouriteSongs();
 };
 
-initApp(); // Initialize the application when the script is loaded
+initApp();
