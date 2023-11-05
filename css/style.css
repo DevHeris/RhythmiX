@@ -596,11 +596,14 @@ ul {
 .swiper-slide .song {
     display: flex;
     padding: .6em;
-    padding-bottom: 2em;
     background-color: var(--primary-clr);
     height: 100%;
     box-shadow: 4px 4px 10px black;
     border-radius: .5em;
+}
+
+.swiper-slide .song-cover {
+    width: 100%;
 }
 
 .swiper-slide .song:hover {
@@ -611,9 +614,9 @@ ul {
 
 .swiper-slide .song img {
     border-radius: .5em;
-    height: 9em;
+    height: 12em;
     margin-bottom: .5em;
-    /* width: 100%; */
+    width: 100%;
 }
 
 .swiper-slide .song i {
@@ -625,7 +628,6 @@ ul {
     height: 38px;
     background-color: var(--secondary-clr);
     border-radius: 50%;
-    margin-bottom: .5em;
 }
 
 .swiper-slide .song i:hover {
@@ -646,4 +648,5 @@ ul {
 .swiper-slide .play {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-start;
 }

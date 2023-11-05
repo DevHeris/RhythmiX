@@ -49,9 +49,9 @@ const createSongElement = (song, index) => {
       <i class="fa-regular fa-heart"></i>
     </div>
   `;
-  li.dataset.index = index; // Store the song's index in the dataset attribute
+  li.dataset.index = index;
 
-  return li; // Return the created list item
+  return li;
 };
 
 const getSongDataByName = (songName) => {
@@ -61,6 +61,13 @@ const getSongDataByName = (songName) => {
 
 const displayFavouriteSongs = () => {
   const songNamesInStorage = getSongFromStorage();
+
+  const existingFavoriteSongs = document.querySelector(
+    ".favorite-songs .swiper-wrapper"
+  );
+  if (existingFavoriteSongs) {
+    existingFavoriteSongs.innerHTML = ""; // Clear the existing favorite songs
+  }
 
   let faveSongsArray = [];
 
@@ -77,21 +84,23 @@ const displayFavouriteSongs = () => {
     const div = document.createElement("div");
     div.classList.add("swiper-slide");
     div.innerHTML = `
-  <div class="song">
-           <div class="song-cover">
-             <img src="${song.imageUrl}" alt="Song Cover">
-             <div class="song-info">
-                 <span class="song-title">${song.name}</span>
-                <span class="song-artist">${song.artist}</span>
+      <div class="song">
+        <div class="song-cover">
+          <img src="${song.imageUrl}" alt="Song Cover">
+          <div class="song-info">
+            <span class="song-title">${song.name}</span>
+            <span class="song-artist">${song.artist}</span>
             <div class="play">
-         <i class="fa-solid fa-play"></i>
-              </div>
-             </div>
-           </div>
-         </div>
-  `;
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
     document.querySelector(".favorite-songs .swiper-wrapper").prepend(div);
   });
+
+  initSwiper();
 };
 
 document.addEventListener("click", (event) => {
@@ -294,6 +303,8 @@ const addFavoriteSongToStorage = (song) => {
   songFromStorage.push(song);
 
   localStorage.setItem("songs", JSON.stringify(songFromStorage));
+
+  displayFavouriteSongs();
 };
 
 const getSongFromStorage = () => {
@@ -319,6 +330,7 @@ const removeSongFromStorage = (song) => {
   songFromStorage = songFromStorage.filter((i) => i !== song);
 
   localStorage.setItem("songs", JSON.stringify(songFromStorage));
+  displayFavouriteSongs();
 };
 
 const checkIfSongExists = (song) => {
@@ -351,7 +363,7 @@ const setInitialFavoriteButtonColor = () => {
           ".song-title"
         ).textContent;
       if (isSongInStorage(songTitle)) {
-        button.classList.add("fa-solid"); // Apply the blue color class
+        button.classList.add("fa-solid");
       }
     });
   }, 1000);
@@ -359,14 +371,14 @@ const setInitialFavoriteButtonColor = () => {
 document.addEventListener("DOMContentLoaded", setInitialFavoriteButtonColor);
 
 // Initialize the swiper
-const initSwiper = (target, delayTime) => {
-  const swiper = new Swiper(target, {
-    slidesPerView: 4,
-    spaceBetween: 30,
+const initSwiper = () => {
+  const swiper = new Swiper(".swiper-1", {
+    slidesPerView: 3,
+    spaceBetween: 40,
     freeMode: true,
     loop: true,
     autoplay: {
-      delay: delayTime,
+      delay: 4000,
       disableOnInteraction: false,
     },
   });
@@ -376,8 +388,7 @@ const initSwiper = (target, delayTime) => {
 const initApp = async () => {
   await fetchSong(); // Fetch song data
   displaySongList(); // Display the song list
-  initSwiper(".swiper-1", 4000);
-  initSwiper(".swiper-2", 4500);
+  initSwiper();
 
   // Event listeners for song list item clicks and navigation buttons
   songList.addEventListener("click", selectSong);
