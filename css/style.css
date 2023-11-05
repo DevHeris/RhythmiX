@@ -585,13 +585,11 @@ ul {
     padding-bottom: 1em;
 }
 
-
 .swiper-wrapper {
     display: flex;
     flex-direction: row;
     padding-bottom: .8em;
 }
-
 
 .swiper-slide .song {
     display: flex;
@@ -630,7 +628,26 @@ ul {
     border-radius: 50%;
     color: var(--white-clr);
     box-shadow: 1px 1px 2px white;
+}
 
+.search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input .search-box {
+    width: 60%;
+    height: 3em;
+    padding: .5em;
+    border-radius: .6em;
+    border: 2px solid white;
+    background-color: var(--primary-clr);
+    color: white;
+}
+
+.search-box:focus {
+    outline: white;
 }
 
 .swiper-slide .song i:hover {
