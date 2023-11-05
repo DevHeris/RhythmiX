@@ -16,6 +16,9 @@ const spinner = document.querySelector(".spinner");
 const faveSection = document.querySelector(".favorite-songs");
 const searchSection = document.querySelector(".search-wrapper");
 const searchBox = document.querySelector(".search-box");
+const backBtn = document.querySelector(".back-btn");
+const forwardBtn = document.querySelector(".forward-btn");
+const searchResults = document.querySelector(".search-results");
 
 // Store fetched song data and set the current song index
 let songsData = [];
@@ -118,7 +121,7 @@ const displayFavouriteSongs = () => {
           <div class="song-info">
             <span class="song-title">${song.name}</span>
             <span class="song-artist">${song.artist}</span>
-            <div class="play" id="playFaveBtn">
+            <div class="play" id="playFaveBtn" title="Play Song">
               <i class="fa-solid fa-play playI"></i>
             </div>
           </div>
@@ -249,6 +252,15 @@ const playRandomSong = () => {
   loadSong(songsData[randomIndex]);
 };
 
+const changeRandomColor = () => {
+  setInterval(() => {
+    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    document.querySelector(
+      ".hero-container"
+    ).style.background = `linear-gradient(#${randomColor} 0%, black)`;
+  }, 5000);
+};
+
 const repeatCurrentSong = () => {
   if (repeatBtn.style.color !== "blue") {
     repeatBtn.style.color = "blue";
@@ -335,6 +347,8 @@ const toggleSection = (fromSection, toSection) => {
   fromSection.classList.add("hide");
   toSection.classList.remove("hide");
   toSection.classList.add("show");
+  searchResults.innerHTML = "";
+  searchBox.value = "";
 };
 
 const toggleSections = (event) => {
@@ -358,7 +372,6 @@ const displaySearchResult = (event) => {
   if (searchBox) {
     let text = event.target.value.toLowerCase();
     const songs = songList.querySelectorAll("li");
-    const searchResults = document.querySelector(".search-results");
 
     // Clear previous search results
     searchResults.innerHTML = "";
@@ -378,7 +391,7 @@ const displaySearchResult = (event) => {
             <div class="song-info">
               <span class="song-title">${songResultData.name}</span>
               <span class="song-artist">${songResultData.artist}</span>
-              <div class="play" id="playFaveBtn">
+              <div class="play" id="playSearchBtn title="Play Song">
                 <i class="fa-solid fa-play playI"></i>
               </div>
             </div>
@@ -389,8 +402,6 @@ const displaySearchResult = (event) => {
     });
   }
 };
-
-searchBox.addEventListener("input", displaySearchResult);
 
 const secondsToMinutes = (seconds) => {
   const minutes = Math.floor(seconds / 60); // Calculate the number of whole minutes
@@ -501,7 +512,14 @@ const initApp = async () => {
   audioElement.addEventListener("ended", playRandomSong);
   progressContainer.addEventListener("click", setProgress);
   audioElement.addEventListener("timeupdate", updateProgress);
+  searchBox.addEventListener("input", displaySearchResult);
   document.addEventListener("click", toggleSections);
+  backBtn.addEventListener("click", () => {
+    toggleSection(searchSection, faveSection);
+  });
+  forwardBtn.addEventListener("click", () => {
+    toggleSection(faveSection, searchSection);
+  });
   volumeSlider.addEventListener("input", () => {
     audioElement.volume = volumeSlider.value;
   });
@@ -522,6 +540,7 @@ const initApp = async () => {
   initSwiper();
   displaySongList(); // Display the song list
   greetByTimeOfDay();
+  changeRandomColor();
   displayFavouriteSongs();
 };
 
