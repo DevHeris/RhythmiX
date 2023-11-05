@@ -29,10 +29,10 @@
             <div class="top-sidebar-item">
                 <ul class="top-sidebar-ul">
                     <li>
-                        <a href="/index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+                        <a href="/index.html" class="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
                     </li>
                     <li>
-                        <a href="#search"><i class="fa-solid fa-search"></i><span>Search</span></a>
+                        <a href="#search" class="search"><i class="fa-solid fa-search"></i><span>Search</span></a>
                     </li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@
                 <div class="scroll-wrapper">
                     <div class="playlist-options">
                         <div class="search-icon">
-                            <i class="fa-solid fa-search"></i>
+                            <i class="fa-solid fa-search search"></i>
                         </div>
                         <div class="sort-option">
                             <div class="align-center">
@@ -53,7 +53,7 @@
                             <div class="sort-submenu" aria-expanded="false">
                                 <h5>Sort by</h5>
                                 <ul class="options">
-                                    <li class="selected"><span>Alphabetical</span></li>
+                                    <li class="selected"><span>A to Z</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -76,54 +76,81 @@
             </div>
             <p class="greeting-msg"></p>
             <div class="hero-content">
-                <div class="search-input">
-                    <input type="search" placeholder="What do you want to listen to?" class="search-box"
-                        autocomplete="on" autofocus>
-                </div>
-                <div class="search-results">
-                    <div class="song">
-                        <div class="song-cover">
-                            <img src="images/summer.jpg" alt="Song Cover">
-                            <div class="song-info">
-                                <span class="song-title">Song Name</span>
-                                <span class="song-artist">Song Artist</span>
-                                <div class="play" id="playFaveBtn">
-                                    <i class="fa-solid fa-play playI"></i>
-                                </div>
-                            </div>
-                        </div>
+                <section class="search-wrapper hide">
+                    <div class="search-input">
+                        <input type="search" placeholder="What do you want to listen to?" class="search-box"
+                            autocomplete="on" autofocus>
                     </div>
-                    <div class="song">
-                        <div class="song-cover">
-                            <img src="images/summer.jpg" alt="Song Cover">
-                            <div class="song-info">
-                                <span class="song-title">Song Name</span>
-                                <span class="song-artist">Song Artist</span>
-                                <div class="play" id="playFaveBtn">
-                                    <i class="fa-solid fa-play playI"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="song">
-                        <div class="song-cover">
-                            <img src="images/summer.jpg" alt="Song Cover">
-                            <div class="song-info">
-                                <span class="song-title">Song Name</span>
-                                <span class="song-artist">Song Artist</span>
-                                <div class="play" id="playFaveBtn">
-                                    <i class="fa-solid fa-play playI"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <section class="favorite-songs">
-                                    <h2>Favorite Songs</h2>
-                                    <div class="swiper-1">
-                                        <div class="swiper-wrapper"></div>
+                    <div class="search-results">
+                        <div class="song">
+                            <div class="song-cover">
+                                <img src="images/summer.jpg" alt="Song Cover">
+                                <div class="song-info">
+                                    <span class="song-title">Song Name</span>
+                                    <span class="song-artist">Song Artist</span>
+                                    <div class="play" id="playFaveBtn">
+                                        <i class="fa-solid fa-play playI"></i>
                                     </div>
-                                </section> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song">
+                            <div class="song-cover">
+                                <img src="images/summer.jpg" alt="Song Cover">
+                                <div class="song-info">
+                                    <span class="song-title">Song Name</span>
+                                    <span class="song-artist">Song Artist</span>
+                                    <div class="play" id="playFaveBtn">
+                                        <i class="fa-solid fa-play playI"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song">
+                            <div class="song-cover">
+                                <img src="images/summer.jpg" alt="Song Cover">
+                                <div class="song-info">
+                                    <span class="song-title">Song Name</span>
+                                    <span class="song-artist">Song Artist</span>
+                                    <div class="play" id="playFaveBtn">
+                                        <i class="fa-solid fa-play playI"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song">
+                            <div class="song-cover">
+                                <img src="images/summer.jpg" alt="Song Cover">
+                                <div class="song-info">
+                                    <span class="song-title">Song Name</span>
+                                    <span class="song-artist">Song Artist</span>
+                                    <div class="play" id="playFaveBtn">
+                                        <i class="fa-solid fa-play playI"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song">
+                            <div class="song-cover">
+                                <img src="images/summer.jpg" alt="Song Cover">
+                                <div class="song-info">
+                                    <span class="song-title">Song Name</span>
+                                    <span class="song-artist">Song Artist</span>
+                                    <div class="play" id="playFaveBtn">
+                                        <i class="fa-solid fa-play playI"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="favorite-songs show">
+                    <h2>Favorite Songs</h2>
+                    <div class="swiper-1">
+                        <div class="swiper-wrapper"></div>
+                    </div>
+                </section>
             </div>
         </section>
     </section>

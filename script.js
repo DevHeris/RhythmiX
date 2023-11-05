@@ -13,6 +13,8 @@ const progress = document.querySelector(".progress");
 const progressContainer = document.querySelector(".progress-container");
 const volumeSlider = document.querySelector(".volume-slider");
 const spinner = document.querySelector(".spinner");
+const faveSection = document.querySelector(".favorite-songs");
+const searchSection = document.querySelector(".search-wrapper");
 
 // Store fetched song data and set the current song index
 let songsData = [];
@@ -279,7 +281,7 @@ const sortSongs = (criteria) => {
   const songsList = document.querySelector(".songs-ul");
   const songs = Array.from(songsList.getElementsByTagName("li"));
 
-  if (criteria === "Alphabetical") {
+  if (criteria === "A to Z") {
     songs.sort((a, b) => {
       const nameA = a.textContent.toLowerCase();
       const nameB = b.textContent.toLowerCase();
@@ -292,7 +294,7 @@ const sortSongs = (criteria) => {
     songsList.removeChild(songsList.firstChild);
   }
 
-  document.querySelector(".align-center span").textContent = "Alphabetical";
+  document.querySelector(".align-center span").textContent = "A to Z";
   submenu.style.display = "none";
 
   // Append the sorted songs back to the list
@@ -324,6 +326,30 @@ const setProgress = (event) => {
 
     const newTime = (clickX / width) * duration;
     audioElement.currentTime = newTime;
+  }
+};
+
+const toggleSection = (fromSection, toSection) => {
+  fromSection.classList.remove("show");
+  fromSection.classList.add("hide");
+  toSection.classList.remove("hide");
+  toSection.classList.add("show");
+};
+
+const toggleSections = (event) => {
+  const isSearch = event.target.classList.contains("search");
+  const isHome = event.target.classList.contains("home");
+
+  if (isSearch) {
+    event.preventDefault();
+    if (faveSection && faveSection.classList.contains("show")) {
+      toggleSection(faveSection, searchSection);
+    }
+  } else if (isHome) {
+    event.preventDefault();
+    if (searchSection && searchSection.classList.contains("show")) {
+      toggleSection(searchSection, faveSection);
+    }
   }
 };
 
@@ -387,16 +413,6 @@ const hideSpinner = () => {
   }
 };
 
-// Event listener for play button click
-playBtn.addEventListener("click", () => {
-  const isPlaying = audioElement.classList.contains("play");
-  if (isPlaying) {
-    pauseSong();
-  } else {
-    playSong();
-  }
-});
-
 const isSongInStorage = (songName) => {
   const songFromStorage = getSongFromStorage();
   return songFromStorage.includes(songName);
@@ -446,15 +462,23 @@ const initApp = async () => {
   audioElement.addEventListener("ended", playRandomSong);
   progressContainer.addEventListener("click", setProgress);
   audioElement.addEventListener("timeupdate", updateProgress);
+  document.addEventListener("click", toggleSections);
+  volumeSlider.addEventListener("input", () => {
+    audioElement.volume = volumeSlider.value;
+  });
   submenu.addEventListener("click", (event) => {
-    if (event.target.textContent === "Alphabetical") {
-      sortSongs("Alphabetical");
+    if (event.target.textContent === "A to Z") {
+      sortSongs("A to Z");
       event.target.style.color = "blue";
     }
-
-    volumeSlider.addEventListener("input", () => {
-      audioElement.volume = volumeSlider.value;
-    });
+  });
+  playBtn.addEventListener("click", () => {
+    const isPlaying = audioElement.classList.contains("play");
+    if (isPlaying) {
+      pauseSong();
+    } else {
+      playSong();
+    }
   });
   initSwiper();
   displaySongList(); // Display the song list
