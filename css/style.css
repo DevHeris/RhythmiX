@@ -651,6 +651,10 @@ ul {
     flex-wrap: wrap;
 }
 
+.search-results .song {
+    width: 15em;
+}
+
 .search-input {
     display: flex;
     justify-content: center;

@@ -15,6 +15,7 @@ const volumeSlider = document.querySelector(".volume-slider");
 const spinner = document.querySelector(".spinner");
 const faveSection = document.querySelector(".favorite-songs");
 const searchSection = document.querySelector(".search-wrapper");
+const searchBox = document.querySelector(".search-box");
 
 // Store fetched song data and set the current song index
 let songsData = [];
@@ -352,6 +353,44 @@ const toggleSections = (event) => {
     }
   }
 };
+
+const displaySearchResult = (event) => {
+  if (searchBox) {
+    let text = event.target.value.toLowerCase();
+    const songs = songList.querySelectorAll("li");
+    const searchResults = document.querySelector(".search-results");
+
+    // Clear previous search results
+    searchResults.innerHTML = "";
+
+    songs.forEach((song) => {
+      const songName = song
+        .querySelector(".song-title")
+        .textContent.toLowerCase();
+      if (songName.indexOf(text) !== -1) {
+        const songResultName = song.querySelector(".song-title").textContent;
+        const songResultData = getSongDataByName(songResultName);
+        const div = document.createElement("div");
+        div.classList.add("song");
+        div.innerHTML = `
+          <div class="song-cover">
+            <img src="${songResultData.imageUrl}" alt="${songResultData.name}">
+            <div class="song-info">
+              <span class="song-title">${songResultData.name}</span>
+              <span class="song-artist">${songResultData.artist}</span>
+              <div class="play" id="playFaveBtn">
+                <i class="fa-solid fa-play playI"></i>
+              </div>
+            </div>
+          </div>
+        `;
+        searchResults.appendChild(div);
+      }
+    });
+  }
+};
+
+searchBox.addEventListener("input", displaySearchResult);
 
 const secondsToMinutes = (seconds) => {
   const minutes = Math.floor(seconds / 60); // Calculate the number of whole minutes
