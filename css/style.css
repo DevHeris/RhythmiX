@@ -586,6 +586,7 @@ ul {
     padding-bottom: 1em;
 }
 
+
 .swiper-wrapper {
     display: flex;
     flex-direction: row;
@@ -614,7 +615,7 @@ ul {
 
 .swiper-slide .song img {
     border-radius: .5em;
-    height: 12em;
+    height: 10em;
     margin-bottom: .5em;
     width: 100%;
 }

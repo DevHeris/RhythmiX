@@ -373,10 +373,10 @@ document.addEventListener("DOMContentLoaded", setInitialFavoriteButtonColor);
 // Initialize the swiper
 const initSwiper = () => {
   const swiper = new Swiper(".swiper-1", {
-    slidesPerView: 3,
-    spaceBetween: 40,
+    slidesPerView: 4,
+    spaceBetween: 20,
     freeMode: true,
-    loop: true,
+    // loop: true,
     autoplay: {
       delay: 4000,
       disableOnInteraction: false,
