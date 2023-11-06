@@ -37,12 +37,6 @@
       "songUrl": "./music/12 iRobot.m4a"
     },
     {
-      "name": "Be Right Now",
-      "artist": "Ed Sheeran",
-      "imageUrl": "./images/rewind.jpg",
-      "songUrl": "./music/14 Ed Sheeran - Be Right Now (NetNaija.com).mp3"
-    },
-    {
       "name": "Happier Than Ever",
       "artist": "Billie Eilish",
       "imageUrl": "./images/summer.jpg",
@@ -122,7 +116,7 @@
     },
     {
       "name": "I Didn't Change My Number",
-      "artist": "Brent Faiyaz",
+      "artist": "Billie Eilish",
       "imageUrl": "./images/Arts_Events_Mega_Nav3.jpg",
       "songUrl": "./music/[5]Billie Eilish - I Didnt Change My Number.mp3"
     },

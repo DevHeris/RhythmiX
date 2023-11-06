@@ -709,8 +709,9 @@ ul {
 @media screen and (max-width:763px) {
     .main-grid-container {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        /* grid-template-rows: 1fr 1fr; */
         grid-gap: 1.5em;
+        padding-bottom: 0;
     }
 
     .sidebar-container {
@@ -726,14 +727,18 @@ ul {
         grid-column: 1/2;
         grid-row: 2/3;
         padding: 2em;
+        height: 60vh;
+        padding-top: 1em;
     }
 
     .back-btn {
         margin-inline-end: .5em;
     }
 
-    .greeting-msg {
+    .hero-container .greeting-msg {
         text-align: center;
+        margin: 0;
+        padding: 0;
     }
 
     .favorite-songs h2 {
