@@ -61,6 +61,132 @@
       "songUrl": "./music/Brent Faiyaz - Trust.mp3"
     },
     {
+      "name": "Perfect",
+      "artist": "Ed Sheeran",
+      "imageUrl": "./images/10806900_4533574.jpg",
+      "songUrl": "./music/Ed_Sheeran_-_Perfect.mp3"
+    },
+    {
+      "name": "I Like It",
+      "artist": "Cardi B",
+      "imageUrl": "./images/23737118_6794619.jpg",
+      "songUrl": "./music/Cardi_B_Ft_Bad_Bunny_J_Balvin_-_I_Like_It.mp3"
+    },
+    {
+      "name": "Boulevard",
+      "artist": "Rema",
+      "imageUrl": "./images/4060996_1161.jpg",
+      "songUrl": "./music/Boulevard.mp3"
+    },
+    {
+      "name": "Mans Not Hot",
+      "artist": "Big Shaq",
+      "imageUrl": "./images/4426570_2360511.jpg",
+      "songUrl": "./music/Big-Shaq-Mans-Not-Hot.mp3"
+    },
+    {
+      "name": "Bloody Samaritan",
+      "artist": "Ayra Starr",
+      "imageUrl": "./images/6-avatar-R9NAUME-3.jpg",
+      "songUrl": "./music/Ayra_Starr_-_Bloody_Samaritan.mp3"
+    },
+    {
+      "name": "Big Thug Boys",
+      "artist": "AV",
+      "imageUrl": "./images/63eiuc (1) (1) (1).png",
+      "songUrl": "./music/AV - Big Thug Boys (NetNaija.com).mp3"
+    },
+    {
+      "name": "No Forget",
+      "artist": "Adekunle Gold_ft_Simi",
+      "imageUrl": "./images/82863c8e540124c3848145bf16484e61.jpg",
+      "songUrl": "./music/Adekunle_Gold_ft_Simi_-_No_Forget.mp3"
+    },
+    {
+      "name": "High",
+      "artist": "Adekunle Gold_ft_Davido",
+      "imageUrl": "./images/Annual_Fund_Mega_Nav.jpg",
+      "songUrl": "./music/Adekunle Gold - High (feat. Davido) (NetNaija.com).mp3"
+    },
+    {
+      "name": "Destiny",
+      "artist": "Brent Nf",
+      "imageUrl": "./images/anthony-intraversato-vYRAP3yMa3I-unsplash.jpg",
+      "songUrl": "./music/[Waploaded]_Nf_-_Destiny-1562702326.mp3"
+    },
+    {
+      "name": "Everybody Dies",
+      "artist": "Billie Eilish",
+      "imageUrl": "./images/Arts.jpg",
+      "songUrl": "./music/[6]Billie Eilish - Everybody Dies.mp3"
+    },
+    {
+      "name": "I Didn't Change My Number",
+      "artist": "Brent Faiyaz",
+      "imageUrl": "./images/Arts_Events_Mega_Nav3.jpg",
+      "songUrl": "./music/[5]Billie Eilish - I Didnt Change My Number.mp3"
+    },
+    {
+      "name": "Memories",
+      "artist": "Aidan",
+      "imageUrl": "./images/back-school-during-covid-concept.jpgtop-view-vinyl-discs.jpg",
+      "songUrl": "./music/347aidan - MEMORIES .mp3"
+    },
+    {
+      "name": "Dior",
+      "artist": "Pop Smoke",
+      "imageUrl": "./images/cdn-images.mailchimp.com_template_images_fake-brands_big-mood-spa_fake-brands_big-mood-spa_hero_0910_jh.jpg",
+      "songUrl": "./music/19 Dior (Bonus).mp3"
+    },
+    {
+      "name": "Be Right Now",
+      "artist": "Ed Sheeran",
+      "imageUrl": "./images/top-view-vinyl-discs.jpg",
+      "songUrl": "./music/14 Ed Sheeran - Be Right Now (NetNaija.com).mp3"
+    },
+    {
+      "name": "Guillotine",
+      "artist": "Jon Bellion_ft_Travis Mendes",
+      "imageUrl": "./images/christian-perner-1fEQTFhcEXU-unsplash.jpg",
+      "songUrl": "./music/13. Guillotine (feat. Travis Mendes).mp3"
+    },
+    {
+      "name": "Love In Slow Motion",
+      "artist": "Ed Sheeran",
+      "imageUrl": "./images/CopyofP2850167.jpg",
+      "songUrl": "./music/11 Ed Sheeran - Love In Slow Motion (NetNaija.com).mp3"
+    },
+    {
+      "name": "The Joker And The Queen",
+      "artist": "Ed Sheeran",
+      "imageUrl": "./images/david-ramos-MPsXIyIBYoE-unsplash.jpg",
+      "songUrl": "./music/06 Ed Sheeran - The Joker And The Queen (NetNaija.com).mp3"
+    },
+    {
+      "name": "Monalisa",
+      "artist": "Lojay & Sarz",
+      "imageUrl": "./images/emmanuel-ikwuegbu-6BWFAPPWn-8-unsplash.jpg",
+      "songUrl": "./music/05 Lojay & Sarz - Monalisa (NetNaija.com).mp3"
+    },
+    {
+      "name": "First Times",
+      "artist": "Ed Sheeran",
+      "imageUrl": "./images/etienne-girardet-4eqmIWYm_Rg-unsplash.jpg",
+      "songUrl": "./music/03 Ed Sheeran - First Times (NetNaija.com).mp3"
+    },
+    {
+      "name": "Shivers",
+      "artist": "Ed Sheeran",
+      "imageUrl": "./images/F3YfUb5XUAA5B87.jpg",
+      "songUrl": "./music/02 Ed Sheeran - Shivers (NetNaija.com).mp3"
+    },
+    {
+      "name": "Crazy Tings",
+      "artist": "Tems",
+      "imageUrl": "./images/joanna-kosinska-7ACuHoezUYk-unsplash.jpg",
+      "songUrl": "./music/01 Tems - Crazy Tings (NetNaija.com).mp3"
+    },
+    {
       "name": "Press",
       "artist": "Cardi B",
       "imageUrl": "./images/ukulele.jpg",
