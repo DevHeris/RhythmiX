@@ -6,6 +6,6 @@ RhythmiX is a dynamic music application designed to redefine your musical journe
 
 ## Features
 
-- **Have Favorite songs
+- Have Favorite songs
 - **User-Friendly Interface:** Enjoy a seamless and user-friendly interface for an intuitive music experience.
 - **Enhanced Music Journey:** Redefine how you enjoy and engage with your favorite tunes.
