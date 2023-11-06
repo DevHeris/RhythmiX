@@ -291,13 +291,12 @@ const sortSongs = (criteria) => {
   const songsList = document.querySelector(".songs-ul");
   const songs = Array.from(songsList.getElementsByTagName("li"));
 
-  // Store the title of the currently playing song
   const currentSongTitle = currentSong.querySelector(".song-title").textContent;
 
   if (criteria === "A to Z") {
     songs.sort((a, b) => {
-      const nameA = a.textContent.toLowerCase();
-      const nameB = b.textContent.toLowerCase();
+      const nameA = a.querySelector(".song-title").textContent.toLowerCase();
+      const nameB = b.querySelector(".song-title").textContent.toLowerCase();
       return nameA.localeCompare(nameB);
     });
   }
@@ -313,8 +312,10 @@ const sortSongs = (criteria) => {
     songsList.appendChild(song);
 
     const songTitle = song.querySelector(".song-title").textContent;
-    if (songTitle === currentSongTitle) {
-      currentSongIndex = index; // Update the current song index in the new order
+    const songData = getSongDataByName(songTitle);
+
+    if (songData && songData.name === currentSongTitle) {
+      currentSongIndex = index;
     }
   });
 };
