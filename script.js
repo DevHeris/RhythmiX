@@ -121,9 +121,6 @@ const displayFavouriteSongs = () => {
           <div class="song-info">
             <span class="song-title">${song.name}</span>
             <span class="song-artist">${song.artist}</span>
-            <div class="play" id="playFaveBtn" title="Play Song">
-              <i class="fa-solid fa-play playI"></i>
-            </div>
           </div>
         </div>
       </div>
@@ -132,21 +129,9 @@ const displayFavouriteSongs = () => {
   });
 
   initSwiper();
-
-  const playFaveBtns = document.querySelectorAll("#playFaveBtn");
-  playFaveBtns.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      const songName =
-        event.target.parentElement.parentElement.querySelector(
-          ".song-title"
-        ).textContent;
-      const songData = getSongDataByName(songName);
-      loadSong(songData);
-    });
-  });
 };
 
-document.addEventListener("click", (event) => {
+const handleFavoriteClick = (event) => {
   if (event.target.classList.contains("fa-heart")) {
     const songTitleElement =
       event.target.parentElement.parentElement.querySelector(".song-title");
@@ -164,7 +149,8 @@ document.addEventListener("click", (event) => {
       removeSongFromStorage(song);
     }
   }
-});
+};
+
 // Handle song selection and update the current song index
 const selectSong = (event) => {
   if (!event.target.classList.contains("fa-heart")) {
@@ -219,6 +205,18 @@ const playSong = () => {
   playBtn.querySelector("i").classList.remove("fa-play");
   playBtn.querySelector("i").classList.add("fa-pause");
   audioElement.play();
+
+  const songsList = document.querySelector(".songs-ul");
+  const songs = Array.from(songsList.getElementsByTagName("li"));
+  const currentSongTitle = currentSong.querySelector(".song-title").textContent;
+  songs.forEach((song, index) => {
+    songsList.appendChild(song);
+
+    const songTitle = song.querySelector(".song-title").textContent;
+    if (songTitle === currentSongTitle) {
+      currentSongIndex = index; // Update the current song index in the new order
+    }
+  });
 };
 
 // Pause the currently playing song
@@ -293,6 +291,9 @@ const sortSongs = (criteria) => {
   const songsList = document.querySelector(".songs-ul");
   const songs = Array.from(songsList.getElementsByTagName("li"));
 
+  // Store the title of the currently playing song
+  const currentSongTitle = currentSong.querySelector(".song-title").textContent;
+
   if (criteria === "A to Z") {
     songs.sort((a, b) => {
       const nameA = a.textContent.toLowerCase();
@@ -301,7 +302,6 @@ const sortSongs = (criteria) => {
     });
   }
 
-  // Clear the current list
   while (songsList.firstChild) {
     songsList.removeChild(songsList.firstChild);
   }
@@ -309,9 +309,13 @@ const sortSongs = (criteria) => {
   document.querySelector(".align-center span").textContent = "A to Z";
   submenu.style.display = "none";
 
-  // Append the sorted songs back to the list
-  songs.forEach((song) => {
+  songs.forEach((song, index) => {
     songsList.appendChild(song);
+
+    const songTitle = song.querySelector(".song-title").textContent;
+    if (songTitle === currentSongTitle) {
+      currentSongIndex = index; // Update the current song index in the new order
+    }
   });
 };
 
@@ -390,9 +394,6 @@ const displaySearchResult = (event) => {
             <div class="song-info">
               <span class="song-title">${songResultData.name}</span>
               <span class="song-artist">${songResultData.artist}</span>
-              <div class="play" id="playSearchBtn title="Play Song">
-                <i class="fa-solid fa-play playI"></i>
-              </div>
             </div>
           </div>
         `;
@@ -479,7 +480,27 @@ const setInitialFavoriteButtonColor = () => {
         button.classList.add("fa-solid");
       }
     });
-  }, 1000);
+  }, 2000);
+};
+
+// Function to play the selected song card
+const playSelectedSongCard = (event) => {
+  if (event.target.closest(".song")) {
+    const songTitle = event.target
+      .closest(".song")
+      .querySelector(".song-title").textContent;
+    const selectedSong = getSongDataByName(songTitle);
+    if (selectedSong) {
+      const selectedIndex = songsData.findIndex(
+        (song) => song.name === songTitle
+      );
+      if (selectedIndex !== -1) {
+        currentSongIndex = selectedIndex;
+        loadSong(selectedSong);
+      }
+    }
+  }
+  setInitialFavoriteButtonColor();
 };
 
 // Initialize the swiper
@@ -488,7 +509,7 @@ const initSwiper = () => {
   if (isMobile) {
     const swiper = new Swiper(".swiper-1", {
       slidesPerView: 1,
-      spaceBetween: 20,
+      spaceBetween: 30,
       freeMode: true,
       autoplay: {
         delay: 4000,
@@ -525,6 +546,9 @@ const initApp = async () => {
   progressContainer.addEventListener("click", setProgress);
   audioElement.addEventListener("timeupdate", updateProgress);
   searchBox.addEventListener("input", displaySearchResult);
+  faveSection.addEventListener("click", playSelectedSongCard);
+  searchResults.addEventListener("click", playSelectedSongCard);
+  document.addEventListener("click", handleFavoriteClick);
   document.addEventListener("click", toggleSections);
   backBtn.addEventListener("click", () => {
     toggleSection(searchSection, faveSection);

@@ -655,6 +655,10 @@ ul {
     width: 15em;
 }
 
+.song-cover .song-info {
+    padding: 1em 0;
+}
+
 .search-input {
     display: flex;
     justify-content: center;
@@ -738,6 +742,8 @@ ul {
 
     .swiper-slide .song {
         height: 18em;
+        width: 15em;
+        margin: auto;
     }
 
     .swiper-slide img {
